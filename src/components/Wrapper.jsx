@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Form from './Form';
 import { v4 as uuidv4 } from "uuid";
 import Task from './Task';
 import EditTodo from './EditTodo';
-uuidv4();
 
   const Wrapper = () => {
     const [tasks, setTasks] = useState([]);
@@ -14,6 +13,10 @@ uuidv4();
         { id: uuidv4(), task: task, completed: false, isEditing: false },
       ]);
     }
+
+    useEffect(() => {
+      localStorage.setItem('lists',JSON.stringify(tasks))
+    },[tasks]);
 
     const toggleComplete = (id) => {
       setTasks(
@@ -27,12 +30,12 @@ uuidv4();
 
     const editTask = (id) => {
       setTasks(tasks.map((task) =>
-      task.id === id ? {...task, isEditing : !task.isEditing} : task));
+        task.id === id ? { ...task, isEditing: !task.isEditing } : task));
     }
-
+  
     const editTodo = (todo, id) => {
       setTasks(tasks.map((task) =>
-      task.id === id ? {...task, todo, isEditing: !task.isEditing} : task));
+      task.id === id ? {...task, task:todo, isEditing: !task.isEditing} : task));
     }
 
     return (

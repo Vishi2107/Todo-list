@@ -14,11 +14,11 @@ const EditTodo = ({editTask, todo}) => {
         <input 
             type="text"
             value={value}
-            placeholder="Update task"
+            placeholder="✍ Update task"
             className="task-input"
             onChange={(e) => setValue(e.target.value)}
         />
-        <button className="btn" type="submit">Update Task</button>
+        <button className="btn" type="submit">Update</button>
         </form>
   )
 }

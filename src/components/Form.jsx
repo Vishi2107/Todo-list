@@ -15,11 +15,11 @@ const Form = ({addTask}) => {
       <form onSubmit={handleSubmit} className="form">
         <input 
             type="text"
-            placeholder="Task for today"
+            placeholder="✍Task for today..."
             className="task-input"
             onChange={(e) => setValue(e.target.value)}
         />
-        <button className="btn" type="submit">Add Task</button>
+        <button className="btn" type="submit" >Add Task</button>
         </form>
   )
 }
